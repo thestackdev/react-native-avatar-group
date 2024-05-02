@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/thestackdev/react-native-avatar-group/issues"
   },
-  "homepage": "https://github.com/mmusaib/react-native-avatar-group#readme",
+  "homepage": "https://github.com/thestackdev/react-native-avatar-group#readme",
   "devDependencies": {
     "@babel/cli": "^7.23.4",
     "@babel/core": "^7.23.7",
