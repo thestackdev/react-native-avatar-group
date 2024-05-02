@@ -67,7 +67,7 @@ export function Circle({
   );
 }
 
-export function renderFacePile(faces = [], numFaces) {
+export function renderAvatarGroup(faces = [], numFaces) {
   const entities = [...faces.reverse()];
   if (!entities.length)
     return {
@@ -91,7 +91,7 @@ export function renderFacePile(faces = [], numFaces) {
   };
 }
 
-interface FacePileProps {
+interface AvatarGroupProps {
   faces: any[];
   circleSize: number;
   hideOverflow: boolean;
@@ -105,7 +105,7 @@ interface FacePileProps {
   borderColor: string;
 }
 
-export default function FacePile({
+export default function AvatarGroup({
   faces,
   hideOverflow = false,
   containerStyle,
@@ -117,7 +117,7 @@ export default function FacePile({
   circleSize = 20,
   numFaces = 4,
   offset = 1,
-}: FacePileProps) {
+}: AvatarGroupProps) {
   function _renderOverflowCircle(overflow) {
     const innerCircleSize = circleSize * 1.8;
     const marginLeft = circleSize * offset - circleSize / 1.6;
@@ -168,7 +168,7 @@ export default function FacePile({
     );
   }
 
-  const { facesToRender, overflow } = renderFacePile(faces, numFaces);
+  const { facesToRender, overflow } = renderAvatarGroup(faces, numFaces);
 
   return (
     <View style={[styles.container, containerStyle]}>
