@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
 interface CircleProps {
   borderColor: string;
   imageStyle: any;
-  circleStyle: StyleSheet;
+  circleStyle: StyleSheet.NamedStyles<any>;
   circleSize: number;
   face: any;
   offset: number;
@@ -67,7 +67,12 @@ export function Circle({
   );
 }
 
-export function renderAvatarGroup(faces = [], numFaces) {
+interface RenderAvatarGroupProps {
+  faces: any[];
+  numFaces: number;
+}
+
+export function renderAvatarGroup({ faces, numFaces }: RenderAvatarGroupProps) {
   const entities = [...faces.reverse()];
   if (!entities.length)
     return {
@@ -75,7 +80,7 @@ export function renderAvatarGroup(faces = [], numFaces) {
       overflow: 0,
     };
 
-  const facesWithImageUrls = entities.filter((e) => e.imageUrl);
+  const facesWithImageUrls = entities.filter((e: any) => e.imageUrl);
   if (!facesWithImageUrls.length)
     return {
       facesToRender: [],
@@ -118,7 +123,7 @@ export default function AvatarGroup({
   numFaces = 4,
   offset = 1,
 }: AvatarGroupProps) {
-  function _renderOverflowCircle(overflow) {
+  function _renderOverflowCircle({ overflow }: any) {
     const innerCircleSize = circleSize * 1.8;
     const marginLeft = circleSize * offset - circleSize / 1.6;
 
@@ -152,7 +157,7 @@ export default function AvatarGroup({
     );
   }
 
-  function _renderFace(face, index) {
+  function _renderFace({ face, index }: any) {
     if (face && !face.imageUrl) return null;
 
     return (
@@ -168,7 +173,7 @@ export default function AvatarGroup({
     );
   }
 
-  const { facesToRender, overflow } = renderAvatarGroup(faces, numFaces);
+  const { facesToRender, overflow } = renderAvatarGroup({ faces, numFaces });
 
   return (
     <View style={[styles.container, containerStyle]}>
